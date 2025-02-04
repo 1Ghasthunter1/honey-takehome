@@ -1,0 +1,112 @@
+{
+  "responses": [
+    {
+      "id": "resp_01HQ5J2K3N4M5P6R7S8T9U0V1",
+      "timestamp": "2024-01-01T00:01:23Z",
+      "model": "gpt-4",
+      "prompt_tokens": 145,
+      "completion_tokens": 412,
+      "total_tokens": 557,
+      "response_time_ms": 2458,
+      "status": "success",
+      "cost_usd": 0.0234,
+      "temperature": 0.7,
+      "max_tokens": 1000,
+      "prompt_template": "standard_qa",
+      "output": "The primary differences between supervised and unsupervised learning are in how they process and learn from data. Supervised learning requires labeled data and aims to learn a mapping between inputs and known outputs. Unsupervised learning, on the other hand, works with unlabeled data to find hidden patterns or structures.",
+      "evaluation_metrics": {
+        "relevance_score": 0.92,
+        "factual_accuracy": 0.88,
+        "coherence_score": 0.95,
+        "response_quality": 0.91
+      },
+      "error": null
+    },
+    {
+      "id": "resp_01HQ5J2K3N4M5P6R7S8T9U0V2",
+      "timestamp": "2024-01-01T00:03:45Z",
+      "model": "gpt-3.5-turbo",
+      "prompt_tokens": 89,
+      "completion_tokens": 1256,
+      "total_tokens": 1345,
+      "response_time_ms": 1247,
+      "status": "success",
+      "cost_usd": 0.0089,
+      "temperature": 0.7,
+      "max_tokens": 2000,
+      "prompt_template": "code_generation",
+      "output": "Here's a React component that implements a data visualization dashboard:\n\n```jsx\nimport React, { useState, useEffect } from 'react';\nimport { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';\n\nconst Dashboard = () => {\n  const [data, setData] = useState([]);\n  const [loading, setLoading] = useState(true);\n\n  useEffect(() => {\n    // Fetch data logic here\n    const fetchData = async () => {\n      try {\n        const response = await fetch('/api/metrics');\n        const result = await response.json();\n        setData(result);\n      } catch (error) {\n        console.error('Error fetching data:', error);\n      } finally {\n        setLoading(false);\n      }\n    };\n\n    fetchData();\n  }, []);\n\n  if (loading) return <div>Loading...</div>;\n\n  return (\n    <div className=\"dashboard\">\n      <h1>Performance Metrics</h1>\n      <LineChart width={800} height={400} data={data}>\n        <CartesianGrid strokeDasharray=\"3 3\" />\n        <XAxis dataKey=\"timestamp\" />\n        <YAxis />\n        <Tooltip />\n        <Legend />\n        <Line type=\"monotone\" dataKey=\"value\" stroke=\"#8884d8\" />\n      </LineChart>\n    </div>\n  );\n};\n\nexport default Dashboard;\n```\n\nThis component includes:\n1. State management using hooks\n2. Data fetching with error handling\n3. Loading states\n4. A responsive chart visualization\n5. Proper TypeScript types (if needed)\n\nTo use this component, you'll need to:\n1. Install required dependencies\n2. Set up your API endpoint\n3. Configure any necessary environment variables\n4. Add appropriate styling\n\nLet me know if you need any clarification or have questions about specific parts of the implementation!",
+      "evaluation_metrics": {
+        "relevance_score": 0.87,
+        "factual_accuracy": 0.85,
+        "coherence_score": 0.89,
+        "response_quality": 0.87
+      },
+      "error": null
+    },
+    {
+      "id": "resp_01HQ5J2K3N4M5P6R7S8T9U0V3",
+      "timestamp": "2024-01-01T00:05:12Z",
+      "model": "claude-3",
+      "prompt_tokens": 234,
+      "completion_tokens": 2567,
+      "total_tokens": 2801,
+      "response_time_ms": 3102,
+      "status": "success",
+      "cost_usd": 0.1234,
+      "temperature": 0.7,
+      "max_tokens": 3000,
+      "prompt_template": "complex_reasoning",
+      "output": "Let's do a comprehensive analysis of the trends in artificial intelligence and their potential impact on various industries over the next decade. This analysis will cover multiple aspects including technological development, economic implications, societal changes, and regulatory considerations.\n\n1. Technological Development\n\nThe field of AI is experiencing rapid advancement in several key areas:\n\na) Large Language Models (LLMs)\n- Increasing model sizes and capabilities\n- Improved efficiency and reduced training costs\n- Enhanced multilingual capabilities\n- Better reasoning and task-specific performance\n\nb) Computer Vision\n- Advanced object detection and recognition\n- Real-time processing improvements\n- Integration with augmented reality\n- Medical imaging breakthroughs\n\nc) Robotics and Automation\n- Enhanced dexterity and control\n- Better environmental adaptation\n- Improved human-robot interaction\n- Integration with IoT systems\n\n[... continues for several more paragraphs with detailed analysis ...]\n\nConclusion:\nThe transformation brought about by AI will be profound and far-reaching. Organizations must prepare for these changes by:\n\n1. Developing comprehensive AI strategies\n2. Investing in workforce training and development\n3. Establishing ethical guidelines and governance frameworks\n4. Building robust data infrastructure\n5. Fostering partnerships and collaborations\n\nSuccess in the AI-driven future will depend on how well organizations can adapt to and leverage these emerging technologies while addressing the associated challenges and risks.",
+      "evaluation_metrics": {
+        "relevance_score": 0.96,
+        "factual_accuracy": 0.94,
+        "coherence_score": 0.97,
+        "response_quality": 0.96
+      },
+      "error": null
+    },
+    {
+      "id": "resp_01HQ5J2K3N4M5P6R7S8T9U0V4",
+      "timestamp": "2024-01-01T00:08:30Z",
+      "model": "gpt-4",
+      "prompt_tokens": 178,
+      "completion_tokens": null,
+      "total_tokens": null,
+      "response_time_ms": 1893,
+      "status": "timeout",
+      "cost_usd": 0.0,
+      "temperature": 0.5,
+      "max_tokens": 2000,
+      "prompt_template": "code_generation",
+      "output": null,
+      "evaluation_metrics": null,
+      "error": {
+        "type": "timeout",
+        "message": "Request timed out after 60 seconds"
+      }
+    },
+    {
+      "id": "resp_01HQ5J2K3N4M5P6R7S8T9U0V5",
+      "timestamp": "2024-01-01T00:10:15Z",
+      "model": "gpt-3.5-turbo",
+      "prompt_tokens": 56,
+      "completion_tokens": 189,
+      "total_tokens": 245,
+      "response_time_ms": 876,
+      "status": "success",
+      "cost_usd": 0.0049,
+      "temperature": 0.8,
+      "max_tokens": 500,
+      "prompt_template": "summarization",
+      "output": "The quarterly financial report shows a 15% increase in revenue, driven primarily by expansion in Asian markets. Key highlights include:\n- Revenue: $12.4M (+15% YoY)\n- Operating Margin: 23% (+3pts)\n- Customer Growth: 28% YoY",
+      "evaluation_metrics": {
+        "relevance_score": 0.94,
+        "factual_accuracy": 0.92,
+        "coherence_score": 0.96,
+        "response_quality": 0.94
+      },
+      "error": null
+    }
+  ]
+}
