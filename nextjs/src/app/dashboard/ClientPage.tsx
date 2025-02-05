@@ -4,14 +4,17 @@ import { UploadDialog } from "@/common/components/UploadDialog";
 import { Button } from "@/common/elements/button";
 import { Divider } from "@/common/elements/divider";
 import { Heading } from "@/common/elements/heading";
+import { Upload } from "@/common/schema/upload";
 import { ArrowUpOnSquareIcon } from "@heroicons/react/16/solid";
 import { useState } from "react";
 
 export default function ClientPage() {
   const [uploadOpen, setUploadOpen] = useState(false);
+  const [data, setData] = useState<Upload | null>(null);
 
-  const handleUpload = (json: unknown) => {
-    console.log(json);
+  const handleUpload = (json: Upload) => {
+    setData(json);
+    setUploadOpen(false);
   };
 
   return (
@@ -29,6 +32,7 @@ export default function ClientPage() {
         onClose={() => setUploadOpen(false)}
         onUpload={handleUpload}
       />
+
     </div>
   );
 }
