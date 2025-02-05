@@ -40,12 +40,12 @@ export default function ClientPage() {
 
     return [
       {
-        title: "Response Time (ms)",
+        title: "Response Time (s)",
         xLabel: "Time",
-        yLabel: "Response Time (ms)",
+        yLabel: "Response Time (s)",
         data: data.responses.map((r) => ({
           x: new Date(r.timestamp).getTime(),
-          y: r.response_time_ms,
+          y: r.response_time_ms / 1000,
         })),
       },
       {
