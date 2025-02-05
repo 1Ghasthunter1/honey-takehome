@@ -1,15 +1,16 @@
 "use client";
 
 import Graph from "@/common/components/Graph";
+import { ResponseDialog } from "@/common/components/ResponseDialog";
 import { UploadDialog } from "@/common/components/UploadDialog";
 import { UploadTable } from "@/common/components/UploadTable";
 import { Button } from "@/common/elements/button";
 import { Divider } from "@/common/elements/divider";
 import { Heading } from "@/common/elements/heading";
 import { Text } from "@/common/elements/text";
-import { Upload } from "@/common/schema/upload";
+import { LLMResponse, Upload } from "@/common/schema/upload";
 import { ArrowUpOnSquareIcon } from "@heroicons/react/16/solid";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 /*
 things to graph:
@@ -25,11 +26,15 @@ things to graph:
 export default function ClientPage() {
   const [uploadOpen, setUploadOpen] = useState(false);
   const [data, setData] = useState<Upload | null>(null);
+  const [selectedResponse, setSelectedResponse] = useState<LLMResponse | null>(
+    null
+  );
 
-  const handleUpload = (json: Upload) => {
+  const handleUpload = useCallback((json: Upload) => {
     setData(json);
     setUploadOpen(false);
-  };
+  }, []);
+
   const dataToPlot: {
     title: string;
     xLabel: string;
@@ -134,13 +139,18 @@ export default function ClientPage() {
       </div>
       <div className="">
         {!!data ? (
-          <UploadTable data={data} />
+          <UploadTable data={data} onResponseClick={setSelectedResponse} />
         ) : (
           <div className="h-64 w-full flex items-center justify-center">
             <Text>No data.</Text>
           </div>
         )}
       </div>
+      <ResponseDialog
+        open={!!selectedResponse}
+        onClose={() => setSelectedResponse(null)}
+        response={selectedResponse}
+      />
     </div>
   );
 }

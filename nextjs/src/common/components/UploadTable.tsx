@@ -9,14 +9,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/common/elements/table";
-import { Upload } from "@/common/schema/upload";
+import { LLMResponse, Upload } from "@/common/schema/upload";
 import { format } from "date-fns";
 
 interface UploadTableProps {
   data: Upload;
+  onResponseClick: (response: LLMResponse) => void;
 }
 
-export function UploadTable({ data }: UploadTableProps) {
+export function UploadTable({ data, onResponseClick }: UploadTableProps) {
   return (
     <Table>
       <TableHead>
@@ -33,7 +34,7 @@ export function UploadTable({ data }: UploadTableProps) {
       </TableHead>
       <TableBody>
         {data.responses.map((response) => (
-          <TableRow key={response.id}>
+          <TableRow key={response.id} onClick={() => onResponseClick(response)}>
             <TableCell>{response.id}</TableCell>
             <TableCell>
               {format(new Date(response.timestamp), "MMM d, yyyy HH:mm:ss")}
